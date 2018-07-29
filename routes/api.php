@@ -17,11 +17,16 @@ use Illuminate\Http\Request;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+// 
+try {
+	$routes = Hook::withoutGlobalScopes()->select('path', 'method')->get();
 
-$routes = Hook::withoutGlobalScopes()->select('path', 'method')->get();
-
-foreach ($routes as $route) {
-	$method = $route->method;
-	$path = $route->path;
-	Route::$method('/'. $path, 'RoutesController@process');
+	foreach ($routes as $route) {
+		$method = $route->method;
+		$path = $route->path;
+		Route::$method('/'. $path, 'RoutesController@process');
+	}
+} catch (\Exception $e) {
+	
 }
+
