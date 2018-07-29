@@ -16,14 +16,16 @@ class CreateHooksTable extends Migration
         Schema::create('hooks', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->string('path')->unique();
+            $table->string('path');
             $table->string('url')->nullable();
-            $table->string('url_string')->nullable();
-            $table->string('method');
+            $table->string('query_string')->nullable();
+            $table->enum('method', ['get', 'post', 'put', 'patch', 'delete', 'head']);
             $table->string('ip')->nullable();
             $table->text('headers')->nullable();
             $table->text('body')->nullable();
             $table->timestamps();
+
+            $table->unique(['path', 'method']);
 
             $table->foreign('user_id')
               ->references('id')->on('users')

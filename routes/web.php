@@ -11,10 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
+Route::get('/', 'HomeController@index')->name('root');
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/hooks', 'HooksController@index')->name('hooks.index');
+Route::get('/hooks/create', 'HooksController@create')->name('hooks.create');
+Route::post('/hooks', 'HooksController@store')->name('hooks.store');
+Route::delete('/hooks/{hook}', 'HooksController@destroy')->name('hooks.delete');
+
+
+

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Hi {{auth()->user()->name}}</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -14,7 +14,14 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <p>
+                        <strong>API Key:</strong> {{auth()->user()->api_token}}
+                    </p>
+
+                    <p>
+                        <strong>Route Prefix:</strong> {{auth()->user()->route_prefix}}
+                    </p>
+
                 </div>
             </div>
         </div>
