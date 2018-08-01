@@ -11,7 +11,7 @@
                     <strong>Hook Url:</strong> {{config('app.url') .'/api/'. $hook->path}}
                 </div>
 
-                <div class="panel-body">
+                <div class="panel-body wrap">
                     <p>
                         <strong>Path:</strong> {{$hook->path}}
                     </p>
@@ -45,7 +45,10 @@
 
                     @if(!empty($hook->body))
                         <p>
-                            <strong>Body:</strong> {{$hook->body}}
+                            <strong>Body:</strong>
+                        </p>
+                        <p>
+                            {{$hook->body}}
                         </p>
                     @endif
 
