@@ -34,11 +34,11 @@
                     @if(!empty($hook->headers))
                         <p><strong>Headers:</strong></p>
                         @foreach($hook->headers as $key => $value)
-                            @if($key != 'Cookie')
+                           
                                 <p>
-                                    {{$key}}: {{($value)}}
+                                    <mark>{{$key}}</mark>: {{($value)}}
                                 </p>
-                            @endif
+                           
                           
                         @endforeach
                     @endif
