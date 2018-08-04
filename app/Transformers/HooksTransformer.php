@@ -11,6 +11,7 @@ class HooksTransformer extends TransformerAbstract
 	public function transform(Hook $hook) 
 	{
 		return [
+			'id' => $hook->id,
 			'path' => $hook->path,
 			'method' => $hook->method,
 			'ip' => $hook->ip,
