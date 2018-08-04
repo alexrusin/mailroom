@@ -14,10 +14,10 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-// 
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
 try {
 	$routes = Hook::withoutGlobalScopes()->select('path', 'method')->get();
 
@@ -29,4 +29,7 @@ try {
 } catch (\Exception $e) {
 	
 }
+
+Route::get('/hooks', 'HooksApiController@index');
+Route::get('/hooks/{id}', 'HooksApiController@show');
 
