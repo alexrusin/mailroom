@@ -12,8 +12,14 @@ class HooksTransformer extends TransformerAbstract
 	{
 		return [
 			'path' => $hook->path,
+			'method' => $hook->method,
+			'ip' => $hook->ip,
 			'url' => $hook->url,
-			'query_string' => $hook->query_string
+			'query_string' => $hook->query_string,
+			'headers' => $hook->headers,
+			'body' => $hook->body,
+			'created_at' => $hook->created_at->toAtomString(),
+			'updated_at' => $hook->updated_at->toAtomString()
 		];
 	}
 }

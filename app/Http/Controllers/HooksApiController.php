@@ -16,7 +16,15 @@ class HooksApiController extends ApiController
 
     public function index()
     {
-    	$hooks = Hook::paginate(50);
+    	$default = 50;
+    	$limit = request('limit');
+    	
+    	if ($limit) {
+    		$hooks = Hook::latest()->paginate($limit);
+    	} else {
+    		$hooks = Hook::latest()->paginate($default);
+    	}
+    	
 
     	return $this->respondWithPagination($hooks, new HooksTransformer);
     }
