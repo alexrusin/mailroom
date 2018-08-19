@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Create Route</div>
+                <div class="panel-heading">New Route</div>
 
                 <div class="panel-body">
                    <form method="POST" action="{{route('hooks.store')}}">
