@@ -18,7 +18,9 @@ class Hook extends Model
         parent::boot();
 
         static::addGlobalScope('user_id', function (Builder $builder) {
-            $builder->where('user_id', auth()->id());
+            if (auth()->check()) {
+                $builder->where('user_id', auth()->id());
+            }
         });
     }
 }

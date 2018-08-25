@@ -33,3 +33,16 @@ try {
 Route::get('/hooks', 'HooksApiController@index');
 Route::get('/hooks/{id}', 'HooksApiController@show');
 
+
+Route::fallback(function(){
+
+    return response()->json([
+            'error' => [
+                'code' => 'NOT-FOUND',
+                'http_code' => 404,
+                'message' => 'Not found'
+            ]
+        ], 404);
+
+})->name('api.fallback.404');
+

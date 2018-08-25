@@ -35,4 +35,20 @@ class PublicApiTest extends TestCase
     		]);
 
     }
+
+    /** @test */
+    public function missing_api_routes_should_return_a_json_404()
+    {
+        $response = $this->get('/api/missing/route');
+
+        $response->assertStatus(404);
+        $response->assertHeader('Content-Type', 'application/json');
+        $response->assertJson([
+           'error' => [
+                'code' => 'NOT-FOUND',
+                'http_code' => 404,
+                'message' => 'Not found'
+            ]   
+        ]);
+    }
 }
