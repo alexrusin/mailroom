@@ -53,6 +53,7 @@ class HooksController extends Controller
     public function destroy(Hook $hook) 
     {
         try {
+            // $this->authorize('update', $hook);
             $hook->delete();
            return redirect()->back()->with('flash', 'Route has been deleted');
         

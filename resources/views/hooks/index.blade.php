@@ -57,7 +57,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="text-right">
-                                <a href="#" class="btn btn-primary">Go To Route</a>
+                                {{--<a href="#" class="btn btn-primary">Go To Route</a>--}}
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal-{{$hook->id}}">Delete</a>
                             </div>
                         </div>

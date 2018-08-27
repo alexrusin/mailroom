@@ -7,6 +7,7 @@ use App\Hook;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class HooksTest extends TestCase
 {
@@ -89,6 +90,22 @@ class HooksTest extends TestCase
 
     	$this->get(route('hooks.index'))
     		->assertSee('hi');
+    }
+
+    /** @test */
+    public function a_user_cant_delete_hook_not_belonging_to_her() 
+    {
+        $this->signIn();
+
+        $hook = Hook::create([
+            'user_id' => 999,
+            'path' => 'hi',
+            'method' => 'get'
+        ]);
+
+        $this->expectException(ModelNotFoundException::class);
+
+        $this->delete(route('hooks.delete', ['hook' => $hook]));
     }
 
 }

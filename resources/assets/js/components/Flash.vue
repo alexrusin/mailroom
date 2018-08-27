@@ -20,6 +20,10 @@
 
         created() {
             if(this.message) {
+                if (this.message.startsWith('Error:')) {
+                    this.level = 'danger';
+                }
+                
                 this.flash();
             }
 
