@@ -24,7 +24,7 @@ try {
 	foreach ($routes as $route) {
 		$method = $route->method;
 		$path = $route->path;
-		Route::$method('/'. $path, 'RoutesController@process');
+		Route::$method('/'. $path, 'RoutesController@process')->middleware('auth:channel');
 	}
 } catch (\Exception $e) {
 	

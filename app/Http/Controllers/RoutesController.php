@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\HookReceived;
 use App\Hook;
+use Illuminate\Support\Facades\Auth;
 
 class RoutesController extends Controller
 {
     public function process() 
     { 	
 	    $path = ltrim(request()->path(), 'api/');
-
     	$method = request()->method();
 
-    	$hook = Hook::withoutGlobalScopes()->where('path', $path)
+    	$hook = Hook::where('path', $path)
     		->where('method', strtolower($method))
     		->first();
     	if(!$hook) {
@@ -32,6 +33,8 @@ class RoutesController extends Controller
    		$hook->body = $body;
 
    		$hook->save();
+
+      event(new HookReceived($hook));
 
    		return response(null, 201);
     }
