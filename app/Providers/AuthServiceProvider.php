@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use App\Auth\Channel;
+use App\Auth\Broadcast;
 use Illuminate\Support\Facades\Auth;
 
 class AuthServiceProvider extends ServiceProvider
@@ -30,6 +31,12 @@ class AuthServiceProvider extends ServiceProvider
         Auth::extend('channel', function ($app, $name, array $config) {
 
             return new Channel(Auth::createUserProvider($config['provider']));
+           
+        });
+
+        Auth::extend('broadcast', function ($app, $name, array $config) {
+
+            return new Broadcast(Auth::createUserProvider($config['provider']));
            
         });
     }

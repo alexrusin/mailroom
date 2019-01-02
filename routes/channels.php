@@ -11,6 +11,11 @@
 |
 */
 
-Broadcast::channel('{route_prefix}', function ($user, $route_prefix) {
+Broadcast::channel('{route_prefix}-{id}', function ($user, $route_prefix, $id) {
     return true;
 });
+
+// Route::post('/broadcasting/auth', function($request) {
+// 	dd('hello there');
+	
+// });

@@ -33,7 +33,7 @@ class HookReceived implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PresenceChannel(auth()->user()->route_prefix);
+        return new PresenceChannel(auth()->user()->route_prefix .'-' . $this->hook->id);
     }
 
     /**

@@ -49,6 +49,11 @@ return [
         'channel' => [
             'driver' => 'channel', 
             'provider' => 'users'
+        ],
+
+        'broadcast' => [
+            'driver' => 'broadcast', 
+            'provider' => 'users'
         ]
     ],
 
