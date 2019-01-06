@@ -38,6 +38,7 @@ Vue.prototype.signedIn = window.App.signedIn;
  */
 
 Vue.component('flash', require('./components/Flash.vue'));
+Vue.component('send-verification-email', require('./components/SendVerificationEmail.vue'));
 
 const app = new Vue({
     el: '#app'

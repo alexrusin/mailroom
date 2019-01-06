@@ -15,6 +15,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('root');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/verify', 'HomeController@verifyUser')->name('verify-user');
+Route::post('/resend-verification-email', 'HomeController@resendVerificationEmail')->name('resend-verification-email');
 
 Route::get('/hooks', 'HooksController@index')->name('hooks.index');
 Route::get('/hooks/create', 'HooksController@create')->name('hooks.create');
