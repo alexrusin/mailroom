@@ -29,10 +29,11 @@ class HooksTest extends TestCase
     }
 
     /** @test */
-    public function an_authenticated_user_can_create_route() 
+    public function an_authenticated_and_verified_user_can_create_route() 
     {
     	$this->signIn();
-
+        auth()->user()->verified = true;
+        
     	$hook = [
     		'method' => 'get',
     		'path' => 'hello/world',
@@ -72,9 +73,10 @@ class HooksTest extends TestCase
     }
 
     /** @test */
-    public function user_can_see_routes()
+    public function authenticated_and_verified_user_can_see_routes()
     {
     	$this->signIn();
+        auth()->user()->verified = true;
 
     	Hook::create([
     		'user_id' => auth()->id(),
